@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dataset SYSTEM "dataset.dtd">
+<dataset>
+<table name="NEWS">
+    <column>TITLE</column>
+    <column>DAY</column>
+    <column>BRIEF</column>
+    <column>CONTENT</column>
+    <column>ID</column>
+    <row>
+      <value>title1</value>
+      <value>2014-10-17</value>
+      <value>brief1</value>
+      <value>content1</value>
+      <value>2</value>
+    </row>
+    <row>
+      <value>title2</value>
+      <value>2014-10-18</value>
+      <value>brief2</value>
+      <value>content2</value>
+      <value>3</value> 
+    </row>
+    <row>
+      <value>title3</value>
+      <value>2014-10-19</value>
+      <value>brief3</value>
+      <value>content3</value>
+      <value>4</value> 
+    </row>
+  </table>   
+</dataset>

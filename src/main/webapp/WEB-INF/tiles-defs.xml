@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<definition name="baseLayout" path="/pages/layout/baseLayout.jsp">
+		<put name="css" value="/css/common.css" />
+		<put name="header" value="/pages/tiles/header/header.jsp" />
+		<put name="menu" value="/pages/tiles/menu.jsp" />
+		<put name="body" value="/pages/tiles/body/welcome.jsp" />
+		<put name="footer" value="/pages/tiles/footer.jsp" />
+	</definition>
+	<definition name="list" extends="baseLayout">
+		<put name="body" value="/pages/tiles/body/list.jsp" />
+	</definition>
+	<definition name="save" extends="baseLayout">
+		<put name="body" value="/pages/tiles/body/save.jsp" />
+	</definition>
+	<definition name="view" extends="baseLayout">
+		<put name="body" value="/pages/tiles/body/view.jsp" />
+	</definition>
+
+	<definition name="errorLayout" path="/pages/layout/errorLayout.jsp">
+		<put name="css" value="/css/common.css" />
+		<put name="header" value="/pages/tiles/header/errorHeader.jsp" />
+		<put name="body" value="/pages/tiles/body/error.jsp" />
+		<put name="footer" value="/pages/tiles/footer.jsp" />
+	</definition>
+</tiles-definitions>

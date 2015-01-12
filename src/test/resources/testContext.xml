@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:test_pool.properties" />
+	</bean>
+
+
+	<bean id="connectionPool" class="com.epam.testapp.database.conn_pool.JDBCConnectionPool"
+		destroy-method="shutdown" init-method="init">
+		<property name="driver" value="${dbDriver}" />
+		<property name="url" value="${dbUrl}" />
+		<property name="user" value="${dbUserName}" />
+		<property name="password" value="${dbPassword}" />
+		<property name="maxSize" value="${maxSize}" />
+		<property name="minSize" value="${minSize}" />
+	</bean>
+	<bean id="dao" class="com.epam.testapp.database.dao.NewsDAO">
+		<property name="connectionPool">
+			<ref local="connectionPool" />
+		</property>
+	</bean>
+
+</beans>

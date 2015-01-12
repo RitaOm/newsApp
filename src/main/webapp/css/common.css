@@ -1,0 +1,281 @@
+/* Common */
+html {
+	width: 100%;
+}
+
+body {
+	width: 100%;
+	margin: 0;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.div-inline-block {
+	display: inline-block;
+}
+
+.page-title-decor {
+	color: #C0C0C0;
+}
+
+.page-title-space {
+	padding: 20px;
+}
+
+.submit-button-space {
+	margin-right: 20px;
+}
+
+.content-div-border {
+	border: 2px solid #DCDCDC;
+	margin-bottom: 15px;
+}
+
+.table-bottom-space {
+	padding-bottom: 30px;
+}
+
+a {
+	color: blue;
+}
+
+a:hover {
+	color: #00CED1;
+}
+
+.error {
+	color: red;
+}
+/* Layout */
+.layout-main-div {
+	width: 100%;
+}
+
+/* Base Layout */
+.base-layout-menu-div {
+	display: inline-block;
+	margin: 15px 20px 0 15px;
+	vertical-align: top;
+	width: 26%;
+}
+
+.base-layout-content-div {
+	width: 68.5%;
+	display: inline-block;
+	vertical-align: top;
+	margin: 15px 0 10px 5px;
+}
+
+#top,#left,#right {
+	background: black;
+	position: fixed;
+}
+
+#left,#right {
+	top: 0;
+	bottom: 0;
+	width: 2px;
+}
+
+#left {
+	left: 0;
+}
+
+#right {
+	right: 0;
+}
+
+#top {
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+}
+
+/* Welcome Page */
+.welcome-greeting {
+	text-align: center;
+	color: #C0C0C0;
+	font-size: 3em;
+}
+
+/* Header */
+.header-main-div {
+	display: block;
+	border-bottom: 2px solid black;
+}
+
+.header-h1 {
+	margin: 30px 60px;
+	color: #191970;
+	font-size: 2.5em;
+}
+
+.header-locale-href {
+	position: absolute;
+	top: 70px;
+	right: 50px;
+}
+
+/* Menu */
+.menu-main-div {
+	background: #A9A9A9;
+	padding: 30px 0 40px 0;
+	min-width: 220px;
+}
+
+.menu-title {
+	background: #696969;
+	margin: 0 0 10px 2px;
+	width: 80%;
+	text-align: center;
+	color: white;
+	font-size: 1.2em;
+	padding: 5px;
+}
+
+.menu-div-hrefs {
+	background: white;
+	text-align: center;
+	font-size: 1.1em;
+	width: 200px;
+	margin: 10px;
+}
+
+.menu-div-imgs-for-hrefs {
+	width: 20px;
+	margin-right: 10px;
+}
+
+.menu-top-img-for-hrefs {
+	margin-bottom: 16px;
+}
+
+/* Footer */
+.footer-main-div {
+	border: 2px solid black;
+	border-bottom: 2px solid black;
+	background: white;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+/* List Body*/
+.list-news-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 10px;
+}
+
+.list-first-tr {
+	width: 84%;
+	padding-left: 40px;
+	min-width: 200px;
+}
+
+.list-second-tr {
+	width: 16%;
+	min-width: 120px;
+	text-align: center;
+}
+
+.list-news-title-decor {
+	font-weight: bold;
+}
+
+.list-table-submit {
+	background: transparent;
+	color: blue;
+	border: none;
+	cursor: pointer;
+}
+
+.list-href {
+	text-decoration: none;
+	margin: 5px;
+}
+
+/* View Body*/
+.view-save-table {
+	min-width: 420px;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 15px;
+}
+
+.view-first-tr {
+	width: 17%;
+	color: #C0C0C0;
+	vertical-align: top;
+	padding-left: 40px;
+}
+
+.view-second-tr {
+	max-width: 600px;
+	min-width: 280px;
+}
+
+.view-third-tr {
+	width: 15%;
+}
+
+.view-submit-div {
+	width: 90%;
+}
+
+/* Edit Body*/
+.save-main-div {
+	min-width: 500px;
+}
+
+.save-first-tr {
+	width: 17%;
+	vertical-align: top;
+	padding-left: 40px;
+}
+
+.save-second-tr {
+	max-width: 500px;
+	min-width: 300px;
+}
+
+.save-third-tr {
+	width: 15%;
+}
+
+.save-title-input-text,.save-textbox,.save-date-input-text {
+	font-family: "Times New Roman";
+	font-size: 1em;
+	display: block;
+}
+
+.save-title-input-text,.save-textbox {
+	width: 100%;
+}
+
+.save-title-space {
+	padding: 33px;
+}
+
+.save-html-errors {
+	color: red;
+	margin-left: 55px;
+}
+
+/* Error Body*/
+.error-body-div {
+	margin: 30px 100px;
+}
+
+.error404-body-div {
+	width: 100%;
+}
+
+.error404-h2 {
+	margin-top: 200px;
+}

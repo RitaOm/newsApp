@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:pool.properties" />
+	</bean>
+
+	<!-- Business Objects -->
+	<bean id="newsForm" class="com.epam.testapp.presentation.form.NewsForm">
+		<property name="newsList">
+			<list></list>
+		</property>
+		<property name="ids">
+			<list></list>
+		</property>
+	</bean>
+	
+	<!-- DAO with own Connection pool -->
+	<!-- <bean id="connectionPool" class="com.epam.testapp.database.conn_pool.JDBCConnectionPool"
+	destroy-method="shutdown" init-method="init">
+	<property name="driver" value="${dbDriver}" />
+	<property name="url" value="${dbUrl}" />
+	<property name="user" value="${dbUserName}" />
+	<property name="password" value="${dbPassword}" />
+	<property name="maxSize" value="${maxSize}" />
+	<property name="minSize" value="${minSize}" />
+</bean>
+	<bean id="dao" class="com.epam.testapp.database.dao.NewsDAO">
+		<property name="connectionPool">
+			<ref local="connectionPool" />
+		</property>
+	</bean>  -->
+
+	<!-- Data source configuration -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${dbDriver}" />
+		<property name="url" value="${dbUrl}" />
+		<property name="username" value="${dbUserName}" />
+		<property name="password" value="${dbPassword}" />
+		<property name="initialSize" value="${minSize}" />
+		<property name="maxActive" value="${maxSize}" />
+	</bean>
+
+	<!-- Hibernate xml DAO -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+	</bean>
+
+	<bean id="dao" class="com.epam.testapp.database.dao.HibernateXMLNewsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+    <!-- Hibernate JPA DAO
+	<bean id="emf"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="META-INF/persistence.xml" />
+		<property name="packagesToScan" value="com.epam.testapp.model" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+	</bean>
+
+	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="emf" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="dao" class="com.epam.testapp.database.dao.HibernateJPANewsDAO">
+	</bean> -->
+	
+	<!-- Actions Classes -->
+	<bean name="/ListNews, /SaveNews, /ViewNews, /EditNews, /DeleteNews"
+		class="com.epam.testapp.presentation.action.NewsAction">
+		<property name="dao" ref="dao" />
+	</bean>
+
+</beans>
+

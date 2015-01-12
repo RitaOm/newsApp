@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="newsForm"
+			type="com.epam.testapp.presentation.form.NewsForm" />
+	</form-beans>
+	<global-exceptions>
+		<exception type="java.lang.Exception" path="errorLayout" />
+	</global-exceptions>
+
+	<action-mappings>
+		<action path="/Welcome" name="newsForm" type="org.apache.struts.actions.ForwardAction"
+			parameter="baseLayout" scope="request" />
+			
+		<action path="/AddNews" name="newsForm" type="org.apache.struts.actions.ForwardAction"
+			parameter="save" scope="request" />
+
+		<action path="/Locale" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" parameter="locale">
+			<forward name="success" path="/Welcome.do" />
+		</action>
+
+		<action path="/ListNews" name="newsForm"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="request"
+			parameter="list">
+			<forward name="failure" path="errorLayout" />
+			<forward name="success" path="list" />
+		</action>
+
+		<action path="/SaveNews" name="newsForm"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="request"
+			input="save" parameter="save">
+			<forward name="failure" path="errorLayout" />
+			<forward name="success" path="view" />
+		</action>
+
+		<action path="/EditNews" name="newsForm"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="request"
+			parameter="view">
+			<forward name="failure" path="errorLayout" />
+			<forward name="success" path="save" />
+			<forward name="undefined" path="/ListNews.do" />
+		</action>
+
+		<action path="/ViewNews" name="newsForm"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="request"
+			parameter="view">
+			<forward name="failure" path="errorLayout" />
+			<forward name="success" path="view" />
+			<forward name="undefined" path="/ListNews.do" />
+		</action>
+
+		<action path="/DeleteNews" name="newsForm"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="request"
+			parameter="delete">
+			<forward name="success" path="/ListNews.do" />
+			<forward name="failure" path="errorLayout" />
+		</action>
+
+	</action-mappings>
+
+	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+
+	<message-resources parameter="messages" />
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-news.xml" />
+
+	</plug-in>
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/applicationContext.xml" />
+	</plug-in>
+
+</struts-config>
+
